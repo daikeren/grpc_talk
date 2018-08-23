@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package hello;
+
+message Request {
+    string name = 1;
+}
+
+message Response {
+    string val = 1;
+}
+
+message BatchRequest {
+    repeated string name = 1;
+}
+
+message BatchResponse {
+    repeated string val = 1;
+}
+
+service Hello {
+    rpc Echo(Request) returns (Response);
+    rpc BatchEcho(BatchRequest) returns (BatchResponse);
+}
