@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='hello.proto',
   package='hello',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bhello.proto\x12\x05hello\"\x17\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x17\n\x08Response\x12\x0b\n\x03val\x18\x01 \x01(\t20\n\x05Hello\x12\'\n\x04\x45\x63ho\x12\x0e.hello.Request\x1a\x0f.hello.Responseb\x06proto3')
+  serialized_pb=_b('\n\x0bhello.proto\x12\x05hello\"\x17\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x17\n\x08Response\x12\x0b\n\x03val\x18\x01 \x01(\t\"\x1c\n\x0c\x42\x61tchRequest\x12\x0c\n\x04name\x18\x01 \x03(\t\"\x1c\n\rBatchResponse\x12\x0b\n\x03val\x18\x01 \x03(\t2h\n\x05Hello\x12\'\n\x04\x45\x63ho\x12\x0e.hello.Request\x1a\x0f.hello.Response\x12\x36\n\tBatchEcho\x12\x13.hello.BatchRequest\x1a\x14.hello.BatchResponseb\x06proto3')
 )
 
 
@@ -86,8 +86,72 @@ _RESPONSE = _descriptor.Descriptor(
   serialized_end=70,
 )
 
+
+_BATCHREQUEST = _descriptor.Descriptor(
+  name='BatchRequest',
+  full_name='hello.BatchRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='hello.BatchRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=72,
+  serialized_end=100,
+)
+
+
+_BATCHRESPONSE = _descriptor.Descriptor(
+  name='BatchResponse',
+  full_name='hello.BatchResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='val', full_name='hello.BatchResponse.val', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=102,
+  serialized_end=130,
+)
+
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
+DESCRIPTOR.message_types_by_name['BatchRequest'] = _BATCHREQUEST
+DESCRIPTOR.message_types_by_name['BatchResponse'] = _BATCHRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
@@ -104,6 +168,20 @@ Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Messag
   ))
 _sym_db.RegisterMessage(Response)
 
+BatchRequest = _reflection.GeneratedProtocolMessageType('BatchRequest', (_message.Message,), dict(
+  DESCRIPTOR = _BATCHREQUEST,
+  __module__ = 'hello_pb2'
+  # @@protoc_insertion_point(class_scope:hello.BatchRequest)
+  ))
+_sym_db.RegisterMessage(BatchRequest)
+
+BatchResponse = _reflection.GeneratedProtocolMessageType('BatchResponse', (_message.Message,), dict(
+  DESCRIPTOR = _BATCHRESPONSE,
+  __module__ = 'hello_pb2'
+  # @@protoc_insertion_point(class_scope:hello.BatchResponse)
+  ))
+_sym_db.RegisterMessage(BatchResponse)
+
 
 
 _HELLO = _descriptor.ServiceDescriptor(
@@ -112,8 +190,8 @@ _HELLO = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=72,
-  serialized_end=120,
+  serialized_start=132,
+  serialized_end=236,
   methods=[
   _descriptor.MethodDescriptor(
     name='Echo',
@@ -122,6 +200,15 @@ _HELLO = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_REQUEST,
     output_type=_RESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='BatchEcho',
+    full_name='hello.Hello.BatchEcho',
+    index=1,
+    containing_service=None,
+    input_type=_BATCHREQUEST,
+    output_type=_BATCHRESPONSE,
     options=None,
   ),
 ])

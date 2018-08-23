@@ -19,6 +19,11 @@ class HelloStub(object):
         request_serializer=hello__pb2.Request.SerializeToString,
         response_deserializer=hello__pb2.Response.FromString,
         )
+    self.BatchEcho = channel.unary_unary(
+        '/hello.Hello/BatchEcho',
+        request_serializer=hello__pb2.BatchRequest.SerializeToString,
+        response_deserializer=hello__pb2.BatchResponse.FromString,
+        )
 
 
 class HelloServicer(object):
@@ -32,6 +37,13 @@ class HelloServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def BatchEcho(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_HelloServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +51,11 @@ def add_HelloServicer_to_server(servicer, server):
           servicer.Echo,
           request_deserializer=hello__pb2.Request.FromString,
           response_serializer=hello__pb2.Response.SerializeToString,
+      ),
+      'BatchEcho': grpc.unary_unary_rpc_method_handler(
+          servicer.BatchEcho,
+          request_deserializer=hello__pb2.BatchRequest.FromString,
+          response_serializer=hello__pb2.BatchResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
