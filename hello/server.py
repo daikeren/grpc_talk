@@ -14,11 +14,20 @@ class HelloService(hello_pb2_grpc.HelloServicer):
         print('Call Echo')
         name = request.name
         if name == '':
-            context.set_details('大爆炸 Name should not be empty')
+            context.set_details('Name should not be empty')
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
 
         response = f"Hello {name}"
         return hello_pb2.Response(val=response)
+
+    def BatchEcho(self, request, context):
+        print('Call BatchEcho')
+        response = []
+
+        for name in request.name:
+            response.append(f"Hello {name}")
+
+        return hello_pb2.BatchResponse(val=response)
 
 
 def serve():

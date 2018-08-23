@@ -16,8 +16,28 @@ def run(name):
         print(status_code.name)
     
 
+def run_batch():
+    channel = grpc.insecure_channel('localhost:50051')
+    stub = hello_pb2_grpc.HelloStub(channel)
+
+    try:
+        request = ['a', 'b', 'c', 'd', 'e']
+
+        response = stub.BatchEcho(hello_pb2.BatchRequest(name=request))
+
+        for r in response.val:
+            print(r)
+
+    except grpc.RpcError as e:
+        status_code = e.code()
+        print(e.details())
+        print(status_code.name)
+
+
 if __name__ == '__main__':
     print("Normal GRPC Call")
     run(name='World')
     print("GRPC with Error")
     run(name='')
+    print('Run Batch GRPC Call')
+    run_batch()
