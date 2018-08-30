@@ -2,8 +2,8 @@ import time
 
 import grpc
 
-import advanced_pb2
-import advanced_pb2_grpc
+import stream_pb2
+import stream_pb2_grpc
 
 
 def gen_request():
@@ -11,14 +11,14 @@ def gen_request():
 
     while 1:
         name = f"Name {count}"
-        yield advanced_pb2.Request(name=name)
+        yield stream_pb2.Request(name=name)
         time.sleep(1)
         count += 1
 
 
 def run():
     channel = grpc.insecure_channel('localhost:50051')
-    stub = advanced_pb2_grpc.HelloStub(channel)
+    stub = stream_pb2_grpc.HelloStub(channel)
 
     try:
         responses = stub.Echo(gen_request())
