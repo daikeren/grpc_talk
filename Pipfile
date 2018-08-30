@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 grpcio = "*"
 grpcio-tools = "*"
+ipython = "*"
+ujson = "*"
 
 [dev-packages]
 

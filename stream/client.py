@@ -10,7 +10,7 @@ def gen_request():
     count = 1
 
     while 1:
-        name = f"Warrior {count}"
+        name = f"Name {count}"
         yield advanced_pb2.Request(name=name)
         time.sleep(1)
         count += 1
