@@ -5,8 +5,11 @@ import stream_pb2 as stream__pb2
 
 
 class HelloStub(object):
-  # missing associated documentation comment in .proto file
-  pass
+  """enum Test {
+  None = 0;
+  }
+
+  """
 
   def __init__(self, channel):
     """Constructor.
@@ -22,8 +25,11 @@ class HelloStub(object):
 
 
 class HelloServicer(object):
-  # missing associated documentation comment in .proto file
-  pass
+  """enum Test {
+  None = 0;
+  }
+
+  """
 
   def Echo(self, request_iterator, context):
     # missing associated documentation comment in .proto file

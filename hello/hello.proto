@@ -22,3 +22,7 @@ service Hello {
     rpc Echo(Request) returns (Response);
     rpc BatchEcho(BatchRequest) returns (BatchResponse);
 }
+
+enum Test {
+    None = 0;
+}

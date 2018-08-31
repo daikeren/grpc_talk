@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package hello;
+
+message Request {
+    string name = 1;
+    int64 val = 2;
+}
+
+enum Setting {
+    TEST = 0 ;
+    TEST2 = 1 ;
+}

@@ -39,5 +39,3 @@ if __name__ == '__main__':
     run(name='World')
     print("GRPC with Error")
     run(name='')
-    print('Run Batch GRPC Call')
-    run_batch()
